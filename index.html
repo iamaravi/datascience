@@ -1,255 +1,35 @@
-
 <!DOCTYPE html>
-<title>Hackme!! </title>
-<meta charset="utf-8">
-<style>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    .node {
-        cursor: pointer;
-    }
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    .node:hover {
-        stroke: #000;
-        stroke-width: 1.5px;
-    }
+    <title>Datascience Play ground</title>
+  </head>
 
-    .node--leaf {
-        fill: white;
-    }
+  <body>
 
-    .label {
-        font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
-        text-anchor: middle;
-        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-    }
+    <header>
+      <div class="container">
+        <h1>Datascience</h1>
+        <h2></h2>
 
-    .label,
-    .node--root,
-    .node--leaf {
-        pointer-events: none;
-    }
+        <section id="downloads">
+          <a href="/trending.html" class="btn">Trending datascience technologies</a>
+        </section>
+      </div>
+    </header>
 
-</style>
-<body style="text-align: center; overflow: hidden;">
-<svg width="700" height="700"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-   
- var root = {
-  "name": "HackMe!",
-  "children": [
-    {
-      "name": "Data Platforms",
-      "children": [
-        {
-          "name": "Hadoop",
-          "size": 3938,
-          "children": [
-            {"name": "HDFS", "size": 1000},
-            {"name": "Yarn", "size": 743},
-            {"name": "Pig", "size": 743},
-            {"name": "Hive", "size": 743},
-            {"name": "Hbase", "size": 743},
-            {"name": "Sqoop", "size": 743},
-           {
-              "name": "Distros",
-              "children":[
-                {"name": "Cloudera", "size": 500},
-                {"name": "Hortonwork", "size": 300},
-                {"name": "MapR", "size": 300}
-              ]
-            }
-          ]
-        },
-        {"name": "HP HAVEn","size": 3938},
-        {"name": "SAP Hana","size": 3938},
-        {"name": "Cisco BigData","size": 3938},
-        {"name": "Oracle BigData","size": 3938},
-        {"name": "Talend","size": 3938},
-        {"name": "TeraData","size": 3938},
-        {"name": "Dell BigData","size": 3938},
-        {
-          "name": "HPCC System",
-          "size": 3938,
-          "children":[
-            {"name": "Thor", "size": 743},
-            {"name": "ECL", "size": 743},
-            {"name": "Roxie", "size": 743}
-          ]
-        },
-        {
-          "name": "Palantir",
-          "size": 3938,
-          "children":[
-            {"name": "Gotham", "size": 743},
-            {"name": "Metropolis", "size": 743}
-          ]
-        },
-        {"name": "Microsoft Azure","size": 3938},
-        {"name": "Microsoft Azure","size": 3938},
-        {"name": "Google BigQuery","size": 3938},
-        {
-          "name": "Mu Sigma Bigdata",
-          "size": 3938,
-          "children":[
-            {"name": "Gotham", "size": 743},
-            {"name": "Metropolis", "size": 743}
-          ]
-        },
-        {"name": "MicroStrategy","size": 3938},
-        {"name": "Opera Solutions","size": 3938},
-        {"name": "Redhat Bigdata","size": 3938},
-        {"name": "Informatica","size": 3938},
-        {"name": "MongoDb","size": 3938},
-        {"name": "Tableau","size": 3938},
-        {"name": "Tableau","size": 3938},
-        {"name": "Cassandra","size": 3938},
-        {"name": "Cassandra","size": 3938},
-        {"name": "GoodData","size": 3938},
-        {"name": "Google BigData","size": 3938},
-        {"name": "Datameer","size": 3938},
-        {"name": "GE Bigdata","size": 3938}
-      ]
-    },
-    {
-      "name": "Data Collection tool",
-      "children": [
-        {"name": "Apache Flume", "size": 7000},
-        {
-          "name": "ELK",
-          "size": 5842,
-          "children":[
-                  {"name": "Elastic Search", "size": 743},
-                  {"name": "Logstash", "size": 743},
-                  {"name": "Kibana", "size": 743}
-          ]
-        },
-        {"name": "Splunk", "size": 5000},
-        {"name": "Nagios", "size": 1000},
-        {"name": "Zabbix", "size": 1000},
-        {"name": "SAP IQ", "size": 1000},
-        {"name": "Penhao", "size": 1000},
-        {"name": "FICO", "size": 1000},
-        {"name": "Syncsort", "size": 1000},
-        {"name": "Good Data BI", "size": 1000},
-        {"name": "Formitize", "size": 1000},
-        {"name": "Pushforms", "size": 1000},
-        {"name": "Trackvia", "size": 1000},
-        {"name": "MagPi", "size": 1000},
-        {"name": "Oracle Coherence", "size": 1000},
-        {"name": "Websphere Extreme sale", "size": 1000},
-        {"name": "Ehcache", "size": 1000},
-        {"name": "Gigaspaces", "size": 1000},
-        {"name": "Gridgrain", "size": 1000},
-        {"name": "Galaxy", "size": 1000},
-        {"name": "Hazlecast", "size": 1000}
-      ]
-    },
-    {
-      "name": "Realtime",
-      "children": [
-        {"name": "StreamAnalytix", "size": 1759},
-        {"name": "Apache Spark ", "size": 5165},
-        {"name": "Apache Flink", "size": 586},
-        {"name": "DataTorrent", "size": 3331},
-        {"name": "EsperTech", "size": 772},
-        {"name": "IBM Streams", "size": 3322},
-        {"name": "SAP SDS", "size": 3322},
-        {"name": "SQLstream", "size": 3322},
-        {"name": "TIBCO", "size": 3322},
-        {"name": "WSO2", "size": 3322}
-      ]
-    },
-    {
-      "name": "Visualization",
-      "children": [
-        {"name": "d3.js", "size": 8833},
-        {"name": "chart.js", "size": 1732},
-        {"name": "R", "size": 3623},
-        {"name": "Tableau", "size": 5066},
-        {"name": "RAW", "size": 3322},
-        {"name": "Dygraphs", "size": 3322},
-        {"name": "Polymaps", "size": 3322},
-        {"name": "Flot", "size": 3322},
-        {"name": "Panda", "size": 3322},
-        {"name": "Matpotlib", "size": 5066},
-        {"name": "Tableau", "size": 3322}
-      ]
-    }
-  ]
-};
+    <div class="container">
+      <section id="main_content">
 
-    var svg = d3.select("svg"),
-            margin = 20,
-            diameter = +svg.attr("width"),
-            g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+      </section>
+    </div>
 
-    var color = d3.scaleLinear()
-            .domain([-1, 5])
-            .range(["hsl(8, 51.6%, 29%)", "hsl(20, 54%, 63%)"])
-            .interpolate(d3.interpolateHcl);
-
-    var pack = d3.pack()
-            .size([diameter - margin, diameter - margin])
-            .padding(2);
-
-    //d3.json("data/flare.json", function(error, root) {
-       // if (error) throw error;
-
-        root = d3.hierarchy(root)
-                .sum(function(d) { return d.size; })
-                .sort(function(a, b) { return b.value - a.value; });
-
-        var focus = root,
-                nodes = pack(root).descendants(),
-                view;
-
-        var circle = g.selectAll("circle")
-                .data(nodes)
-                .enter().append("circle")
-                .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
-                .style("fill", function(d) { return d.children ? color(d.depth) : null; })
-                .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
-
-        var text = g.selectAll("text")
-                .data(nodes)
-                .enter().append("text")
-                .attr("class", "label")
-                .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-                .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-                .style("font-weight","bold")
-                .text(function(d) { return d.data.name; });
-
-        var node = g.selectAll("circle,text");
-
-        svg
-                .on("click", function() { zoom(root); });
-
-        zoomTo([root.x, root.y, root.r * 2 + margin]);
-
-        function zoom(d) {
-            var focus0 = focus; focus = d;
-
-            var transition = d3.transition()
-                    .duration(d3.event.altKey ? 7500 : 750)
-                    .tween("zoom", function(d) {
-                        var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-                        return function(t) { zoomTo(i(t)); };
-                    });
-
-            transition.selectAll("text")
-                    .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-                    .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
-                    .on("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
-                    .on("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
-        }
-
-        function zoomTo(v) {
-            var k = diameter / v[2]; view = v;
-            node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
-            circle.attr("r", function(d) { return d.r * k; });
-        }
-   // });
-
-</script>
-</body>
+    
+  </body>
+</html>
